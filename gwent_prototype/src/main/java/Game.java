@@ -102,11 +102,13 @@ public class Game {
         // Implement the logic for a player's turn
         // Prompt the player for a move, process the move, and update the game state
 
+        board.displayBoard();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select a card from your hand:");
         List<Card> hand = player.getHand();
         for (int i = 0; i < hand.size(); i++) {
-            System.out.println((i + 1) + ". " + hand.get(i).getName());
+            System.out.println((i + 1) + ". " + hand.get(i).getName() + "(" + hand.get(i).getProvision() + ")");
         }
 
         int selectedIndex = scanner.nextInt();
@@ -128,8 +130,6 @@ public class Game {
     }
 
     private void endRound() {
-        // Implement the logic to end the round
-        // Update player scores based on the board state
         // Reduce player lives if they lose the round
         // Reset the board and player hands for the next round
 
