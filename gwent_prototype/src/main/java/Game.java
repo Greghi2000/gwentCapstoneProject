@@ -72,11 +72,33 @@ public class Game {
 
     //deals exact same cards to both players everytime
     private void dealCards(Player player) {
-        // deal cards to the players
         List<Card> availableCards = databaseManager.getCardBank();
-        ArrayList<Card> playerHand = new ArrayList<>(availableCards.subList(0, 3)); // Deal 10 cards to each player
+        int max = availableCards.size();
+
+        // Generate a random number
+        RandomNumberGenerator rng = new RandomNumberGenerator(max);
+        int randomNumber = rng.getRandomNumber();
+
+        // Select a random subset of cards from the available cards
+        int numCardsToDeal = 5; // Number of cards to deal
+        ArrayList<Card> playerHand = new ArrayList<>();
+
+        for (int i = 0; i < numCardsToDeal; i++) {
+            // Generate a new random number for each card
+            randomNumber = rng.getRandomNumber();
+
+            // Add the randomly selected card to the player's hand
+            Card selectedCard = availableCards.get(randomNumber);
+            playerHand.add(selectedCard);
+
+            // Remove the selected card from the available cards
+            availableCards.remove(randomNumber);
+            max--;
+        }
+
         player.setHand(playerHand);
     }
+
 
     private void playGame() {
         // Implement the main game loop
