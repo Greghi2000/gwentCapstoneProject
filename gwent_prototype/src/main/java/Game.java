@@ -127,8 +127,6 @@ public class Game {
 
     private void endRound() {
         // Implement the logic to end the round
-        // Evaluate the round result, update scores, lives, etc.
-        // You can define your own rules for determining the round result
         // Update player scores based on the board state
         // Reduce player lives if they lose the round
         // Reset the board and player hands for the next round
@@ -160,8 +158,7 @@ public class Game {
 
     private boolean isGameOver() {
         // Implement the logic to check if the game is over
-        // You can define your own conditions based on game rules
-        // For example, if a player has lost all their lives, you can consider the game over
+        //game over if a player has no lifes
         // Return true if the game is over, false otherwise
 
         return player1.getLifes() <= 0 || player2.getLifes() <= 0;
@@ -169,7 +166,7 @@ public class Game {
 
     private void endGame() {
         // Implement the logic to end the game
-        // Determine the game winner based on the final game state (lives, scores, etc.)
+        // Determine the game winner based on the final game state (lives)
         // Display the winner and any other relevant information
 
         if (player1.getLifes() <= 0) {
