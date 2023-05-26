@@ -112,8 +112,7 @@ public class Game {
         int selectedIndex = scanner.nextInt();
         Card selectedCard = hand.get(selectedIndex - 1);
 
-        //need to change below to select by player number
-        board.addCardToBoard(selectedCard, player.getName());
+        board.addCardToBoard(selectedCard, player.getPlayerNumber());
         player.removeFromHand(selectedCard);
     }
 

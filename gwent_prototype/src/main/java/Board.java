@@ -99,8 +99,8 @@ public class Board {
         this.player2TotalScore = player2TotalScore;
     }
 
-    public void addCardToBoard(Card card, String player) {
-        if (player.equals("player1")) {
+    public void addCardToBoard(Card card, int player) {
+        if (player == 1) {
             if (card.getBoardType().equals("melee")){
                 player1Cards.get("melee").add(card);
                 setPlayer1MeleeTotal(calculateRowTotal(getPlayer1Cards().get("melee")));
@@ -114,7 +114,7 @@ public class Board {
                 setPlayer1SiegeTotal(calculateRowTotal(getPlayer1Cards().get("siege")));
             }
             setPlayer1TotalScore(getPlayer1MeleeTotal() + getPlayer1RangedTotal() + getPlayer1SiegeTotal());
-        } else if (player.equals("player2")) {
+        } else if (player == 2) {
             if (card.getBoardType().equals("melee")){
                 player2Cards.get("melee").add(card);
                 setPlayer2MeleeTotal(calculateRowTotal(getPlayer2Cards().get("melee")));

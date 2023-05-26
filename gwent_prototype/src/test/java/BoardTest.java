@@ -45,8 +45,8 @@ public class BoardTest {
     public void canAddAndRemove(){
         player1.selectCard(card);
         Card cardToPlay = player1.playCard();
-        board1.addCardToBoard(cardToPlay, "player1");
-        board1.addCardToBoard(cardToPlay, "player1");
+        board1.addCardToBoard(cardToPlay, 1);
+        board1.addCardToBoard(cardToPlay, 1);
         assertEquals("Regis: Higher Vampire", board1.getPlayer1Cards().get("melee").get(0).getName());
         assertEquals(18, board1.getPlayer1MeleeTotal(), 0.0);
         assertEquals(18, board1.getPlayer1TotalScore(), 0.0);
