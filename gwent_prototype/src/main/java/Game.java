@@ -48,16 +48,33 @@ public class Game {
     }
 
     private String getPlayerName(int playerNumber) {
-        // get players names
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Player " + playerNumber + " name: ");
-        return scanner.nextLine();
+        String playerName;
+
+        while (true) {
+            System.out.print("Enter Player " + playerNumber + " name: ");
+            playerName = scanner.nextLine();
+
+            if (isValidName(playerName)) {
+                break;
+            } else {
+                System.out.println("Invalid name. Please enter a valid name.");
+            }
+        }
+
+        return playerName;
     }
 
+    private boolean isValidName(String name) {
+        return !name.isEmpty() && name.matches("[a-zA-Z]+");
+    }
+
+
+    //deals exact same cards to both players everytime
     private void dealCards(Player player) {
         // deal cards to the players
         List<Card> availableCards = databaseManager.getCardBank();
-        ArrayList<Card> playerHand = new ArrayList<>(availableCards.subList(0, 10)); // Deal 10 cards to each player
+        ArrayList<Card> playerHand = new ArrayList<>(availableCards.subList(0, 3)); // Deal 10 cards to each player
         player.setHand(playerHand);
     }
 
@@ -101,26 +118,37 @@ public class Game {
     }
 
     private void playTurn(Player player) {
-        // Implement the logic for a player's turn
         // Prompt the player for a move, process the move, and update the game state
-
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select a card from your hand:");
         List<Card> hand = player.getHand();
-        for (int i = 0; i < hand.size(); i++) {
-            System.out.println((i + 1) + ". " + hand.get(i).getName() + "(" + hand.get(i).getProvision() + ")");
+
+        while (true) {
+            for (int i = 0; i < hand.size(); i++) {
+                System.out.println((i + 1) + ". " + hand.get(i).getName() + "(" + hand.get(i).getProvision() + ")");
+            }
+
+            if (scanner.hasNextInt()) {
+                int selectedIndex = scanner.nextInt();
+                if (selectedIndex >= 1 && selectedIndex <= hand.size()) {
+                    Card selectedCard = hand.get(selectedIndex - 1);
+                    board.addCardToBoard(selectedCard, player.getPlayerNumber());
+                    player.removeFromHand(selectedCard);
+                    break;
+                } else {
+                    System.out.println("Invalid card selection. Please choose a valid card option.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next(); // Consume the invalid input to prevent an infinite loop
+            }
         }
 
-        int selectedIndex = scanner.nextInt();
-        Card selectedCard = hand.get(selectedIndex - 1);
-
-        board.addCardToBoard(selectedCard, player.getPlayerNumber());
-        player.removeFromHand(selectedCard);
-
         board.displayBoard();
-
     }
+
+
 
     private boolean isRoundOver() {
         // check if the round is over
@@ -158,15 +186,14 @@ public class Game {
 
         // Reset the board
         board.resetBoard();
-//        player1.resetHand();
-//        player2.resetHand();
     }
 
     private boolean isGameOver() {
-        // game over if a player has no lifes
+        // game over if a player has no lives
         // Return true if the game is over, false otherwise
 
-        return player1.getLifes() <= 0 || player2.getLifes() <= 0;
+        return player1.getLifes() <= 0 || player2.getLifes() <= 0 ||
+                player1.getHand().isEmpty() && player2.getHand().isEmpty();
     }
 
     private void endGame() {
