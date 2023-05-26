@@ -73,4 +73,16 @@ public class DatabaseManager {
             System.out.println("---------------");
         }
     }
+
+    public Card findCardById(int id){
+        Card foundCard = null;
+
+        for (Card card : getCardBank()){
+            if (card.getCard() == id) {
+                foundCard = card;
+                return card;
+            }
+        }
+        return null;
+    }
 }
