@@ -7,14 +7,36 @@ public class Player {
     ArrayList<Card> hand;
     int lifes;
 
+    int playerNumber;
+
     Card selectedCard;
+
+    boolean hasForfeit;
 
     public Player(String name){
         this.name = name;
         this.deck = new ArrayList<>();
         this.hand = new ArrayList<>();
         lifes = 2;
+        playerNumber = 0;
         selectedCard = null;
+        hasForfeit = false;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public boolean getHasForfeit() {
+        return hasForfeit;
+    }
+
+    public void setHasForfeit(boolean hasForfeit) {
+        this.hasForfeit = hasForfeit;
     }
 
     public String getName() {
@@ -86,6 +108,13 @@ public class Player {
         selectedCard = null;
         removeFromHand(getSelectedCard());
         return playedCard;
+    }
+
+    public boolean hasForfeited(){
+        if (getHasForfeit()){
+            return true;
+        }
+        return false;
     }
 
     //need a forfit round method
