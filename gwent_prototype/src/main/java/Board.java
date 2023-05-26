@@ -172,6 +172,7 @@ public class Board {
         }
     }
 
+
     public void displayBoard() {
         String title = "GWENT!";
         String horizontalLine = "++------------------------------------------------++";
@@ -209,9 +210,6 @@ public class Board {
     }
 
 
-
-
-
     public void resetBoard() {
         // Clear player1Cards and player2Cards
         player1Cards.get("melee").clear();
@@ -234,10 +232,4 @@ public class Board {
         setPlayer2TotalScore(0);
     }
 
-
-
-
-
-
-    // Other methods and functionality of the Board class
 }

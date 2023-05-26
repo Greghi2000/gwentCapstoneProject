@@ -116,6 +116,4 @@ public class Player {
         }
         return false;
     }
-
-    //need a forfit round method
 }
