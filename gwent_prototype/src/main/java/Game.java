@@ -119,10 +119,13 @@ public class Game {
 
     private boolean isRoundOver() {
         // check if the round is over
-        // If BOTH players have forfeited the round or if they have BOTH run out of cards then the round is over
+        // If BOTH players have forfeited the round or if they have BOTH run out of cards then the round is over, or one has forfieted and one is out of cards
 
+        //this could be refactored so that if a player hand is empty then they are auto forfeit
         return (player1.getHand().isEmpty() && player2.getHand().isEmpty()) ||
-                (player1.hasForfeited() && player2.hasForfeited());
+                (player1.hasForfeited() && player2.hasForfeited()) ||
+                (player1.getHand().isEmpty() && player2.hasForfeited()) ||
+                (player1.hasForfeited()  && player2.getHand().isEmpty());
     }
 
     private void endRound() {
@@ -157,15 +160,13 @@ public class Game {
     }
 
     private boolean isGameOver() {
-        // Implement the logic to check if the game is over
-        //game over if a player has no lifes
+        // game over if a player has no lifes
         // Return true if the game is over, false otherwise
 
         return player1.getLifes() <= 0 || player2.getLifes() <= 0;
     }
 
     private void endGame() {
-        // Implement the logic to end the game
         // Determine the game winner based on the final game state (lives)
         // Display the winner and any other relevant information
 
@@ -178,10 +179,4 @@ public class Game {
         }
     }
 
-    private int calculatePlayerScores() {
-
-
-
-        //can just get the total scores from board
-    }
 }

@@ -197,6 +197,27 @@ public class Board {
         System.out.println(getPlayer2TotalScore());
     }
 
+    public void resetBoard() {
+        // Clear player1Cards and player2Cards
+        player1Cards.get("melee").clear();
+        player1Cards.get("ranged").clear();
+        player1Cards.get("siege").clear();
+
+        player2Cards.get("melee").clear();
+        player2Cards.get("ranged").clear();
+        player2Cards.get("siege").clear();
+
+        // Reset scores to zero
+        setPlayer1MeleeTotal(0);
+        setPlayer1RangedTotal(0);
+        setPlayer1SiegeTotal(0);
+        setPlayer1TotalScore(0);
+
+        setPlayer2MeleeTotal(0);
+        setPlayer2RangedTotal(0);
+        setPlayer2SiegeTotal(0);
+        setPlayer2TotalScore(0);
+    }
 
 
 
