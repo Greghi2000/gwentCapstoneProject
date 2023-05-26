@@ -173,29 +173,44 @@ public class Board {
     }
 
     public void displayBoard() {
-        System.out.println("Player 1: ");
-        System.out.print("Melee: ");
-        System.out.println(getPlayer1Cards().get("melee") + " Score: " + getPlayer1MeleeTotal());
-        System.out.print("Ranged: ");
-        System.out.println(getPlayer1Cards().get("ranged") + " Score: " + getPlayer1RangedTotal());
-        System.out.print("Siege: ");
-        System.out.println(getPlayer1Cards().get("siege") + " Score: " + getPlayer1SiegeTotal());
+        String title = "GWENT!";
+        String horizontalLine = "++------------------------------------------------++";
+        String emptyLine = "                                                    ";
 
-        System.out.print("Total Score: ");
-        System.out.println(getPlayer1TotalScore());
-        System.out.println();
+        // Print the top border
+        System.out.println(horizontalLine);
 
-        System.out.println("Player 2: ");
-        System.out.print("Melee: ");
-        System.out.println(getPlayer2Cards().get("melee") + " Score: " + getPlayer2MeleeTotal());
-        System.out.print("Ranged: ");
-        System.out.println(getPlayer2Cards().get("ranged") + " Score: " + getPlayer2RangedTotal());
-        System.out.print("Siege: ");
-        System.out.println(getPlayer2Cards().get("siege") + " Score: " + getPlayer2SiegeTotal());
+        // Print the title
+        System.out.println(centeredString(title, 50));
 
-        System.out.print("Total Score: ");
-        System.out.println(getPlayer2TotalScore());
+        // Print Player 1's information
+        System.out.println(" Player 1:");
+        System.out.println(" Melee: " + getPlayer1Cards().get("melee") + " Score: " + getPlayer1MeleeTotal());
+        System.out.println(" Ranged: " + getPlayer1Cards().get("ranged") + " Score: " + getPlayer1RangedTotal());
+        System.out.println(" Siege: " + getPlayer1Cards().get("siege") + " Score: " + getPlayer1SiegeTotal());
+        System.out.println(" Total Score: " + getPlayer1TotalScore());
+
+        // Print Player 2's information
+        System.out.println(" Player 2:");
+        System.out.println(" Melee: " + getPlayer2Cards().get("melee") + " Score: " + getPlayer2MeleeTotal());
+        System.out.println(" Ranged: " + getPlayer2Cards().get("ranged") + " Score: " + getPlayer2RangedTotal());
+        System.out.println(" Siege: " + getPlayer2Cards().get("siege") + " Score: " + getPlayer2SiegeTotal());
+        System.out.println(" Total Score: " + getPlayer2TotalScore());
+
+        // Print the bottom border
+        System.out.println(horizontalLine);
     }
+
+    private String centeredString(String text, int width) {
+        int padding = Math.max(0, width - text.length());
+        int leftPadding = padding / 2;
+        int rightPadding = padding - leftPadding;
+        return String.format("%" + leftPadding + "s%s%" + rightPadding + "s", "", text, "");
+    }
+
+
+
+
 
     public void resetBoard() {
         // Clear player1Cards and player2Cards

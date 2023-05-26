@@ -69,6 +69,8 @@ public class Game {
             // Begin the round
             System.out.println("Starting a new round...");
 
+
+
             // Begin the turn
             System.out.println("Player 1's turn:");
             playTurn(player1);
@@ -102,7 +104,6 @@ public class Game {
         // Implement the logic for a player's turn
         // Prompt the player for a move, process the move, and update the game state
 
-        board.displayBoard();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select a card from your hand:");
@@ -116,6 +117,9 @@ public class Game {
 
         board.addCardToBoard(selectedCard, player.getPlayerNumber());
         player.removeFromHand(selectedCard);
+
+        board.displayBoard();
+
     }
 
     private boolean isRoundOver() {
