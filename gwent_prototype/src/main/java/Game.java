@@ -2,14 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Game {
     private DatabaseManager databaseManager;
     private Board board;
     private Player player1;
     private Player player2;
-
-
 
     public Game() {
         databaseManager = new DatabaseManager();
@@ -99,7 +96,6 @@ public class Game {
         player.setHand(playerHand);
     }
 
-
     private void playGame() {
         // Implement the main game loop
         boolean gameOver = false;
@@ -107,8 +103,6 @@ public class Game {
         while (!gameOver) {
             // Begin the round
             System.out.println("Starting a new round...");
-
-
 
             // Begin the turn
             System.out.println("Player 1's turn:");
@@ -222,9 +216,9 @@ public class Game {
         // Determine the game winner based on the final game state (lives)
         // Display the winner and any other relevant information
 
-        if (player1.getLifes() <= 0) {
+        if (player1.getLifes() <= 0 || player1.getLifes() < player2.getLifes()) {
             System.out.println("Player 2 wins the game!");
-        } else if (player2.getLifes() <= 0) {
+        } else if (player2.getLifes() <= 0 || player2.getLifes() < player1.getLifes()) {
             System.out.println("Player 1 wins the game!");
         } else {
             System.out.println("Game ended in a draw!");
