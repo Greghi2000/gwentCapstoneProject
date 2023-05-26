@@ -144,6 +144,7 @@ public class Game {
             for (int i = 0; i < hand.size(); i++) {
                 System.out.println((i + 1) + ". " + hand.get(i).getName() + "(" + hand.get(i).getProvision() + ")");
             }
+            System.out.println("0. Forfeit round");
 
             if (scanner.hasNextInt()) {
                 int selectedIndex = scanner.nextInt();
@@ -151,6 +152,9 @@ public class Game {
                     Card selectedCard = hand.get(selectedIndex - 1);
                     board.addCardToBoard(selectedCard, player.getPlayerNumber());
                     player.removeFromHand(selectedCard);
+                    break;
+                } else if (selectedIndex == 0) {
+                    player.setHasForfeit(true);
                     break;
                 } else {
                     System.out.println("Invalid card selection. Please choose a valid card option.");
