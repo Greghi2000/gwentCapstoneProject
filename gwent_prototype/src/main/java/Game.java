@@ -105,7 +105,8 @@ public class Game {
             System.out.println("Starting a new round...");
 
             // Begin the turn
-            System.out.println("Player 1's turn:");
+            System.out.println();
+            System.out.println(ConsoleColours.BLUE + "Player 1's turn:" + ConsoleColours.RESET);
             playTurn(player1);
 
             // Check if the round or game is over
@@ -117,7 +118,8 @@ public class Game {
             }
 
             // Begin the turn
-            System.out.println("Player 2's turn:");
+            System.out.println();
+            System.out.println(ConsoleColours.GREEN + "Player 2's turn:" + ConsoleColours.RESET);
             playTurn(player2);
 
             // Check if the round or game is over
@@ -137,14 +139,15 @@ public class Game {
         // Prompt the player for a move, process the move, and update the game state
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println();
         System.out.println("Select a card from your hand:");
         List<Card> hand = player.getHand();
 
         while (true) {
             for (int i = 0; i < hand.size(); i++) {
-                System.out.println((i + 1) + ". " + hand.get(i).getName() + "(" + hand.get(i).getProvision() + ")");
+                System.out.print((i + 1) + ". " + hand.get(i).getName() + "(" + ConsoleColours.YELLOW + hand.get(i).getProvision() + ConsoleColours.RESET + ")  ");
             }
-            System.out.println("0. Forfeit round");
+            System.out.println(ConsoleColours.RED + "0. Forfeit round" + ConsoleColours.RESET);
 
             if (scanner.hasNextInt()) {
                 int selectedIndex = scanner.nextInt();
