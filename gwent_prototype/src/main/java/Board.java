@@ -174,7 +174,7 @@ public class Board {
 
 
     public void displayBoard() {
-        String title = "GWENT!";
+        String title = ConsoleColours.RED + "GWENT!" + ConsoleColours.RESET;
         String horizontalLine = "++------------------------------------------------++";
         String emptyLine = "                                                    ";
 
@@ -182,31 +182,60 @@ public class Board {
         System.out.println(horizontalLine);
 
         // Print the title
-        System.out.println(centeredString(title, 50));
+        System.out.println("                        " + title);
+        System.out.println();
 
         // Print Player 1's information
-        System.out.println(" Player 1:");
-        System.out.println(" Melee: " + getPlayer1Cards().get("melee") + " Score: " + getPlayer1MeleeTotal());
-        System.out.println(" Ranged: " + getPlayer1Cards().get("ranged") + " Score: " + getPlayer1RangedTotal());
-        System.out.println(" Siege: " + getPlayer1Cards().get("siege") + " Score: " + getPlayer1SiegeTotal());
-        System.out.println(" Total Score: " + getPlayer1TotalScore());
+        System.out.print(ConsoleColours.BLUE + " Melee" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1MeleeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player1MeleeCards = getPlayer1Cards().get("melee");
+        for (Card card : player1MeleeCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
 
-        // Print Player 2's information
-        System.out.println(" Player 2:");
-        System.out.println(" Melee: " + getPlayer2Cards().get("melee") + " Score: " + getPlayer2MeleeTotal());
-        System.out.println(" Ranged: " + getPlayer2Cards().get("ranged") + " Score: " + getPlayer2RangedTotal());
-        System.out.println(" Siege: " + getPlayer2Cards().get("siege") + " Score: " + getPlayer2SiegeTotal());
-        System.out.println(" Total Score: " + getPlayer2TotalScore());
+        System.out.print(ConsoleColours.BLUE + " Ranged" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1RangedTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player1RangedCards = getPlayer1Cards().get("ranged");
+        for (Card card : player1RangedCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
+
+        System.out.print(ConsoleColours.BLUE + " Siege" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1SiegeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player1SiegeCards = getPlayer1Cards().get("siege");
+        for (Card card : player1SiegeCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
+
+        System.out.println();
+        System.out.println(ConsoleColours.BLUE + " Player 1: " + ConsoleColours.RESET +  ConsoleColours.PURPLE + "(" + getPlayer1TotalScore() + ")" + ConsoleColours.RESET);
+
+        System.out.println(ConsoleColours.GREEN + " Player 2: " + ConsoleColours.RESET + ConsoleColours.PURPLE + "(" + getPlayer2TotalScore() + ")" + ConsoleColours.RESET);
+        System.out.println();
+
+        System.out.print(ConsoleColours.GREEN + " Melee" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2MeleeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player2MeleeCards = getPlayer2Cards().get("melee");
+        for (Card card : player2MeleeCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
+
+        System.out.print(ConsoleColours.GREEN + " Ranged" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2RangedTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player2RangedCards = getPlayer2Cards().get("ranged");
+        for (Card card : player2RangedCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
+
+        System.out.print(ConsoleColours.GREEN + " Siege" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2SiegeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
+        ArrayList<Card> player2SiegeCards = getPlayer2Cards().get("siege");
+        for (Card card : player2SiegeCards) {
+            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+        }
+        System.out.println();
 
         // Print the bottom border
         System.out.println(horizontalLine);
-    }
-
-    private String centeredString(String text, int width) {
-        int padding = Math.max(0, width - text.length());
-        int leftPadding = padding / 2;
-        int rightPadding = padding - leftPadding;
-        return String.format("%" + leftPadding + "s%s%" + rightPadding + "s", "", text, "");
     }
 
 
