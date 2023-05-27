@@ -6,7 +6,9 @@ Gwent is a strategic card game originally introduced in The Witcher 3: Wild Hunt
 
 2. Deck Composition: Each player starts with a deck of at least 25 cards and no more than 40 cards. The deck consists of unit cards, special cards, and faction-specific cards.
 
-3. Game Board: The game board is divided into two main rows for each player, the Melee row and the Ranged row. Some cards have specific abilities based on their placement on these rows.
+3. ***** Game Board: The game board is divided into two main rows for each player, the Melee row and the Ranged row. Some cards have specific abilities based on their placement on these rows. 
+
+***** (not the rules in this version where there are three ranks including a siege rank)
 
 4. Card Types:
    a. Unit Cards: These cards represent various characters, creatures, and special abilities. Each unit card has a power value.
