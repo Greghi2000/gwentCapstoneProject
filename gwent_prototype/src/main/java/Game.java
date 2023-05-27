@@ -10,17 +10,17 @@ public class Game {
 
     public Game() {
         databaseManager = new DatabaseManager();
-        board = new Board();
         player1 = null;
         player2 = null;
+        board = new Board(null, null);
+
     }
 
     public void start() {
         // Load game data from JSON file
         databaseManager.loadCardsFromJSON("src/main/resources/Cards.json");
 
-        // Initialize the board
-        board = new Board();
+
 
         // Get player names and initialize players
         String player1Name = getPlayerName(1);
@@ -31,6 +31,9 @@ public class Game {
 
         player2 = new Player(player2Name);
         player2.setPlayerNumber(2);
+
+        // Initialize the board
+        board = new Board(player1, player2);
 
         // Deal cards to players
         dealCards(player1);
