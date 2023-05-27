@@ -15,7 +15,10 @@ public class Board {
     private int player2SiegeTotal;
     private int player2TotalScore;
 
-    public Board() {
+    Player player1;
+    Player player2;
+
+    public Board(Player playerOne, Player playerTwo) {
         player1Cards = new HashMap<>();
         player1Cards.put("melee", new ArrayList<>());
         player1Cards.put("ranged", new ArrayList<>());
@@ -25,6 +28,10 @@ public class Board {
         player2Cards.put("melee", new ArrayList<>());
         player2Cards.put("ranged", new ArrayList<>());
         player2Cards.put("siege", new ArrayList<>());
+
+
+        player1 = playerOne;
+        player2 = playerTwo;
     }
 
     public HashMap<String, ArrayList<Card>> getPlayer1Cards() {
@@ -208,9 +215,17 @@ public class Board {
         System.out.println();
 
         System.out.println();
-        System.out.println(ConsoleColours.BLUE + " Player 1: " + ConsoleColours.RESET +  ConsoleColours.PURPLE + "(" + getPlayer1TotalScore() + ")" + ConsoleColours.RESET);
 
-        System.out.println(ConsoleColours.GREEN + " Player 2: " + ConsoleColours.RESET + ConsoleColours.PURPLE + "(" + getPlayer2TotalScore() + ")" + ConsoleColours.RESET);
+        //Print player 1 lives
+        String player1Lives = printLives(player1);
+        System.out.print(ConsoleColours.BLUE + "Player 1: " + ConsoleColours.RESET + ConsoleColours.PURPLE + "(" + getPlayer1TotalScore() + ")" + ConsoleColours.RESET + " " + ConsoleColours.RED + player1Lives + " " + ConsoleColours.RESET);
+
+        System.out.println();
+
+        //print player 2 lives
+        String player2Lives = printLives(player2);
+        System.out.print(ConsoleColours.GREEN + "Player 2: " + ConsoleColours.RESET + ConsoleColours.PURPLE + "(" + getPlayer2TotalScore() + ")" + ConsoleColours.RESET + " " + ConsoleColours.RED + player2Lives + " " + ConsoleColours.RESET);
+        System.out.println();
         System.out.println();
 
         System.out.print(ConsoleColours.GREEN + " Melee" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2MeleeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
@@ -237,6 +252,16 @@ public class Board {
         // Print the bottom border
         System.out.println(horizontalLine);
     }
+
+    public String printLives(Player player) {
+        int lives = player.getLifes();
+        StringBuilder heartSymbols = new StringBuilder();
+        for (int i = 0; i < lives; i++) {
+            heartSymbols.append("\u2665 ");
+        }
+        return " " + heartSymbols.toString().trim() + " ";
+    }
+
 
 
     public void resetBoard() {
