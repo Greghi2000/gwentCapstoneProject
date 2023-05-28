@@ -106,8 +106,11 @@ public class Game {
         while (!gameOver) {
             // Begin the round
             System.out.println("Starting a new round...");
+            player1.setHasForfeit(false);
+            player2.setHasForfeit(false);
 
             // Begin the turn
+            //need to check here that player has not forfeit or ran out of cards, as you can keep placing cards down even if your opponent is out
             System.out.println();
             System.out.println(ConsoleColours.BLUE + "Player 1's turn:" + ConsoleColours.RESET);
             playTurn(player1);
@@ -147,6 +150,8 @@ public class Game {
         List<Card> hand = player.getHand();
 
         while (true) {
+            board.displayBoard();
+
             for (int i = 0; i < hand.size(); i++) {
                 System.out.print((i + 1) + ". " + hand.get(i).getName() + "(" + ConsoleColours.YELLOW + hand.get(i).getProvision() + ConsoleColours.RESET + ")  ");
             }
@@ -167,11 +172,10 @@ public class Game {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.next(); // Consume the invalid input to prevent an infinite loop
+                scanner.next(); //fix to prevent infinite loop
             }
         }
 
-        board.displayBoard();
     }
 
 
