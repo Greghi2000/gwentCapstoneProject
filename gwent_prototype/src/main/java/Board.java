@@ -196,21 +196,21 @@ public class Board {
         System.out.print(ConsoleColours.BLUE + " Melee" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1MeleeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
         ArrayList<Card> player1MeleeCards = getPlayer1Cards().get("melee");
         for (Card card : player1MeleeCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
         System.out.print(ConsoleColours.BLUE + " Ranged" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1RangedTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
         ArrayList<Card> player1RangedCards = getPlayer1Cards().get("ranged");
         for (Card card : player1RangedCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
         System.out.print(ConsoleColours.BLUE + " Siege" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer1SiegeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.BLUE + ": " + ConsoleColours.RESET);
         ArrayList<Card> player1SiegeCards = getPlayer1Cards().get("siege");
         for (Card card : player1SiegeCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
@@ -231,21 +231,21 @@ public class Board {
         System.out.print(ConsoleColours.GREEN + " Melee" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2MeleeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
         ArrayList<Card> player2MeleeCards = getPlayer2Cards().get("melee");
         for (Card card : player2MeleeCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
         System.out.print(ConsoleColours.GREEN + " Ranged" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2RangedTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
         ArrayList<Card> player2RangedCards = getPlayer2Cards().get("ranged");
         for (Card card : player2RangedCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
         System.out.print(ConsoleColours.GREEN + " Siege" + ConsoleColours.RESET + ConsoleColours.YELLOW + " (" + getPlayer2SiegeTotal() +  ")" + ConsoleColours.RESET + ConsoleColours.GREEN + ": " + ConsoleColours.RESET);
         ArrayList<Card> player2SiegeCards = getPlayer2Cards().get("siege");
         for (Card card : player2SiegeCards) {
-            System.out.print(" [" + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
+            System.out.print(" [ " + card.getName() + ConsoleColours.YELLOW + " (" + card.getProvision() + ") " + ConsoleColours.RESET + "] ");
         }
         System.out.println();
 
