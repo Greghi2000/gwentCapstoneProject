@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +22,7 @@ public class Game {
         // Load game data from JSON file
         databaseManager.loadCardsFromJSON("src/main/resources/Cards.json");
 
-
+        System.out.println(ConsoleColours.RED + "GWENT!!!" + ConsoleColours.RESET);
 
         // Get player names and initialize players
         String player1Name = getPlayerName(1);
@@ -166,6 +168,9 @@ public class Game {
                     break;
                 } else if (selectedIndex == 0) {
                     player.setHasForfeit(true);
+                    System.out.println();
+                    System.out.println(ConsoleColours.PURPLE + "Player " + player.getPlayerNumber() + " has forfeited the round" + ConsoleColours.RESET);
+                    System.out.println();
                     break;
                 } else {
                     System.out.println("Invalid card selection. Please choose a valid card option.");
@@ -198,21 +203,25 @@ public class Game {
         int player1Score = board.getPlayer1TotalScore();
         int player2Score = board.getPlayer2TotalScore();
 
-        System.out.println("Player 1 Score: " + player1Score);
-        System.out.println("Player 2 Score: " + player2Score);
+        System.out.println();
+        System.out.println(ConsoleColours.BLUE + "Player 1 Score: " + player1Score + ConsoleColours.RESET);
+        System.out.println(ConsoleColours.GREEN + "Player 2 Score: " + player2Score + ConsoleColours.RESET);
+        System.out.println();
 
         if (player1Score > player2Score) {
             player2.setLifes(player2.getLifes() - 1);
-            System.out.println("Player 1 wins the round!");
+            System.out.println(ConsoleColours.PURPLE + "Player 1 wins the round!" + ConsoleColours.RESET);
         } else if (player2Score > player1Score) {
             player1.setLifes(player1.getLifes() - 1);
-            System.out.println("Player 2 wins the round!");
+            System.out.println(ConsoleColours.PURPLE + "Player 2 wins the round!" + ConsoleColours.RESET);
         } else {
             player1.setLifes(player1.getLifes() - 1);
             player2.setLifes(player2.getLifes() - 1);
-            System.out.println("Round ended in a draw!");
+            System.out.println(ConsoleColours.PURPLE + "Round ended in a draw!" + ConsoleColours.RESET);
 
         }
+
+        System.out.println();
 
         // Reset the board
         board.resetBoard();
@@ -231,11 +240,11 @@ public class Game {
         // Display the winner and any other relevant information
 
         if (player1.getLifes() <= 0 || player1.getLifes() < player2.getLifes()) {
-            System.out.println("Player 2 wins the game!");
+            System.out.println(ConsoleColours.PURPLE + "Player 2 wins the game!" + ConsoleColours.RESET);
         } else if (player2.getLifes() <= 0 || player2.getLifes() < player1.getLifes()) {
-            System.out.println("Player 1 wins the game!");
+            System.out.println(ConsoleColours.PURPLE + "Player 1 wins the game!" + ConsoleColours.RESET);
         } else {
-            System.out.println("Game ended in a draw!");
+            System.out.println(ConsoleColours.PURPLE + "Game ended in a draw!" + ConsoleColours.RESET);
         }
     }
 
